@@ -1,27 +1,16 @@
 version: "3.9"
 services:
-  azure-cognitive-service-id:
-    container_name: azure-cognitive-service-id
-    image: mcr.microsoft.com/azure-cognitive-services/form-recognizer/id-document
-    environment:
-      - EULA=accept
-      - billing={FORM_RECOGNIZER_ENDPOINT_URI}
-      - apikey={FORM_RECOGNIZER_API_KEY}
-      - AzureCognitiveServiceReadHost=http://azure-cognitive-service-read:5000
-    ports:
-      - "5000:5050"
-    networks:
-      - ocrvnet
-  azure-cognitive-service-read:
-    container_name: azure-cognitive-service-read
-    image: mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
-    environment:
-      - EULA=accept
-      - billing={COMPUTER_VISION_ENDPOINT_URI}
-      - apikey={COMPUTER_VISION_API_KEY}
-    networks:
-      - ocrvnet
-
+  azure-cognitive-service-layout:
+      container_name: azure-cognitive-service-layout
+      image: mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout
+      environment:
+        - EULA=accept
+        - billing=<your-api-endpoint>
+        - apikey=<your-api-key>
+      ports:
+        - "5000:5000"
+      networks:
+        - ocrvnet
 networks:
   ocrvnet:
     driver: bridge

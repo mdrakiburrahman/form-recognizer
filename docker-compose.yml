@@ -5,8 +5,8 @@ services:
       image: mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout
       environment:
         - EULA=accept
-        - billing=https://aia-form-01.cognitiveservices.azure.com
-        - apikey=5e9a528e0ce74666b200b32e837ae0de
+        - billing=<your--api--endpoint>
+        - apikey=<your--api--key>
       ports:
         - "5000:5000"
       networks:
